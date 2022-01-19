@@ -1,0 +1,13 @@
+- name: configuring postfix mail server
+  hosts: mailserver
+  vars:
+    pkg:
+      - postfix
+      - cyrus-sasl-plain
+      - mailx
+    svc: postfix
+  tasks:
+    - name: installing {{ pkg }} packages
+      yum:
+        name: "{{ pkg }}"
+        state: latest
